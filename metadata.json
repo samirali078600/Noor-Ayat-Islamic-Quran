@@ -1,0 +1,7 @@
+{
+  "name": "Noor Ayat",
+  "description": "Quran quotes in English and simple Hinglish with Arabic text, Surah explorer, instant search, bookmarks, and shareable 9:16 social cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

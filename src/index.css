@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-arabic: 'Amiri', 'Scheherazade New', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Cinzel', serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FDFBF7;
+    color: #1A1A1A;
+    min-height: 100vh;
+  }
+
+  .dark body {
+    background-color: #071911;
+    color: #FDFBF7;
+  }
+}
+
+.font-arabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+  line-height: 2.2;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Bento Theme Radial Background */
+.bento-bg-gradient {
+  background: radial-gradient(circle at top right, #F5EFE6 0%, #FDFBF7 100%);
+}
+
+.dark .bento-bg-gradient {
+  background: radial-gradient(circle at top right, #0F2D1F 0%, #061810 100%);
+}
+
+/* Subtle Islamic Star & Lattice Vector Pattern */
+.bg-islamic-pattern {
+  background-color: transparent;
+  background-image: radial-gradient(rgba(27, 67, 50, 0.08) 1px, transparent 1px), radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.dark .bg-islamic-pattern {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px), radial-gradient(rgba(52, 211, 153, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 67, 50, 0.6);
+}
+
+/* Smooth tap highlighting on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
