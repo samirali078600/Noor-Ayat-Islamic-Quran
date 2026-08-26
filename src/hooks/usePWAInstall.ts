@@ -9,8 +9,18 @@ export function usePWAInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstallable, setIsInstallable] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isInIframe, setIsInIframe] = useState(false);
 
   useEffect(() => {
+    // Check if inside iframe
+    try {
+      if (window.self !== window.top) {
+        setIsInIframe(true);
+      }
+    } catch {
+      setIsInIframe(true);
+    }
+
     // Check if app is running in standalone mode (already installed)
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
@@ -60,5 +70,6 @@ export function usePWAInstall() {
     return false;
   };
 
-  return { isInstallable, isInstalled, installApp };
+  return { isInstallable, isInstalled, isInIframe, installApp };
 }
+

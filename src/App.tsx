@@ -45,7 +45,7 @@ export default function App() {
   const [selectedAyahForDownload, setSelectedAyahForDownload] = useState<Ayah | null>(null);
 
   const { theme, toggleTheme } = useTheme();
-  const { isInstallable, isInstalled, installApp } = usePWAInstall();
+  const { isInstallable, isInstalled, isInIframe, installApp } = usePWAInstall();
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -212,6 +212,7 @@ export default function App() {
         onClose={() => setIsInstallModalOpen(false)}
         isInstallable={isInstallable}
         isInstalled={isInstalled}
+        isInIframe={isInIframe}
         onInstall={installApp}
       />
 
