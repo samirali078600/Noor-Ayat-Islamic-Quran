@@ -10,7 +10,6 @@ import {
   Layers,
   Info,
   Dice5,
-  Download,
 } from 'lucide-react';
 import { ActiveTab } from '../types';
 import { APP_LOGO } from '../assets/logo';
@@ -20,7 +19,6 @@ interface NavbarProps {
   setActiveTab: (tab: ActiveTab) => void;
   savedCount: number;
   onOpenSearch: () => void;
-  onOpenInstall?: () => void;
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
@@ -30,7 +28,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   setActiveTab,
   savedCount,
   onOpenSearch,
-  onOpenInstall,
   theme,
   toggleTheme,
 }) => {
@@ -102,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Tools: Search Button + Install App + Random Ayah + Theme Toggle */}
+        {/* Right Tools: Search Button + Random Ayah + Theme Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Quick Search Button */}
           <button
@@ -116,23 +113,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </kbd>
           </button>
 
-          {/* Install App Button */}
-          {onOpenInstall && (
-            <button
-              id="btn-navbar-install-app"
-              onClick={onOpenInstall}
-              title="Install App"
-              className="flex items-center gap-1.5 bg-[#1B4332] dark:bg-[#D4AF37] hover:bg-[#133326] dark:hover:bg-[#c5a028] text-white dark:text-[#0A2016] px-3 sm:px-4 py-2 rounded-full text-xs font-bold shadow-md active:scale-95 transition-all cursor-pointer"
-            >
-              <Download className="w-3.5 h-3.5 text-[#D4AF37] dark:text-[#0A2016]" />
-              <span>Install App</span>
-            </button>
-          )}
-
           {/* Random Ayah Pill Button */}
           <button
             onClick={() => setActiveTab('random')}
-            className="hidden md:flex items-center gap-1.5 bg-[#D4AF37] hover:bg-[#c5a028] active:scale-95 text-white dark:text-[#0A2016] px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all cursor-pointer"
+            className="hidden sm:flex items-center gap-1.5 bg-[#D4AF37] hover:bg-[#c5a028] active:scale-95 text-white dark:text-[#0A2016] px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all cursor-pointer"
           >
             <Dice5 className="w-3.5 h-3.5" />
             <span>Random Ayah</span>
