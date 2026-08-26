@@ -1,24 +1,40 @@
 export type CategoryType =
   | 'Sabr & Patience'
+  | 'Patience & Sabr'
   | 'Tawakkul'
+  | 'Trust in Allah (Tawakkul)'
   | 'Imaan & Faith'
   | 'Dua'
+  | 'Supplication & Dua'
   | 'Forgiveness'
+  | 'Forgiveness (Tawbah)'
   | "Allah's Mercy"
+  | 'Mercy & Rahmah'
   | 'Hope'
+  | 'Hope & Good News'
   | 'Hard Times'
   | 'Rizq'
+  | 'Rizq & Wealth'
   | 'Parents'
   | 'Family'
   | 'Prayer'
+  | 'Prayer & Salah'
   | 'Guidance'
   | 'Jannah'
   | 'Akhirah'
+  | 'Hereafter (Akhirah)'
   | 'Ramadan'
   | 'Gratitude'
+  | 'Gratitude & Shukr'
   | 'Justice'
+  | 'Justice & Rights'
   | 'Kindness'
-  | 'Repentance';
+  | 'Repentance'
+  | 'Good Character & Akhlaq'
+  | 'Peace & Contentment'
+  | 'Spiritual Growth'
+  | 'Love of Allah'
+  | 'Nature & Reflection';
 
 export interface Ayah {
   id: number;

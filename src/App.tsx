@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { ActiveTab, Ayah, CategoryType } from './types';
 import { useTheme } from './hooks/useTheme';
 import { useBookmarks } from './hooks/useBookmarks';
+import { usePWAInstall } from './hooks/usePWAInstall';
 import { Navbar } from './components/Navbar';
 import { BottomNav } from './components/BottomNav';
 import { Footer } from './components/Footer';
@@ -15,6 +16,7 @@ import { SearchModal } from './components/SearchModal';
 import { ShareModal } from './components/ShareModal';
 import { CardDownloadModal } from './components/CardDownloadModal';
 import { DetailModal } from './components/DetailModal';
+import { InstallAppModal } from './components/InstallAppModal';
 import { ScrollToTop } from './components/ScrollToTop';
 
 import { HomeView } from './views/HomeView';
@@ -36,11 +38,13 @@ export default function App() {
 
   // Modals state
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
   const [selectedAyahForDetail, setSelectedAyahForDetail] = useState<Ayah | null>(null);
   const [selectedAyahForShare, setSelectedAyahForShare] = useState<Ayah | null>(null);
   const [selectedAyahForDownload, setSelectedAyahForDownload] = useState<Ayah | null>(null);
 
   const { theme, toggleTheme } = useTheme();
+  const { isInstallable, isInstalled, installApp } = usePWAInstall();
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -83,6 +87,7 @@ export default function App() {
         setActiveTab={handleTabChange}
         savedCount={savedCount}
         onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenInstall={() => setIsInstallModalOpen(true)}
         theme={theme}
         toggleTheme={toggleTheme}
       />
@@ -170,7 +175,12 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'about' && <AboutView showToast={showToast} />}
+        {activeTab === 'about' && (
+          <AboutView
+            showToast={showToast}
+            onOpenInstall={() => setIsInstallModalOpen(true)}
+          />
+        )}
       </main>
 
       {/* Footer */}
@@ -188,6 +198,15 @@ export default function App() {
 
       {/* Toast Notification */}
       <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
+
+      {/* Install App Modal */}
+      <InstallAppModal
+        isOpen={isInstallModalOpen}
+        onClose={() => setIsInstallModalOpen(false)}
+        isInstallable={isInstallable}
+        isInstalled={isInstalled}
+        onInstall={installApp}
+      />
 
       {/* Global Search Modal */}
       <SearchModal

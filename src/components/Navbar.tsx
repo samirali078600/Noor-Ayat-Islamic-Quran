@@ -10,14 +10,17 @@ import {
   Layers,
   Info,
   Dice5,
+  Download,
 } from 'lucide-react';
 import { ActiveTab } from '../types';
+import { APP_LOGO } from '../assets/logo';
 
 interface NavbarProps {
   activeTab: ActiveTab;
   setActiveTab: (tab: ActiveTab) => void;
   savedCount: number;
   onOpenSearch: () => void;
+  onOpenInstall?: () => void;
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
@@ -27,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   setActiveTab,
   savedCount,
   onOpenSearch,
+  onOpenInstall,
   theme,
   toggleTheme,
 }) => {
@@ -52,8 +56,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('home')}
           className="flex items-center gap-3 group text-left cursor-pointer"
         >
-          <div className="w-10 h-10 rounded-2xl bg-[#1B4332] dark:bg-[#0F2D1F] border-2 border-[#D4AF37] flex items-center justify-center text-[#D4AF37] shadow-md group-hover:scale-105 transition-transform">
-            <span className="font-arabic font-bold text-lg leading-none pt-0.5">نور</span>
+          <div className="relative w-10 h-10 rounded-2xl p-0.5 bg-gradient-to-tr from-[#D4AF37] via-[#F3E5AB] to-[#1B4332] shadow-md group-hover:scale-105 transition-transform overflow-hidden">
+            <img
+              src={APP_LOGO}
+              alt="Noor Ayat App Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover rounded-[14px]"
+            />
           </div>
           <div>
             <div className="font-serif font-bold text-xl tracking-wider text-[#1B4332] dark:text-[#D4AF37] flex items-center gap-1.5">
@@ -93,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Tools: Search Button + Random Ayah + Theme Toggle */}
+        {/* Right Tools: Search Button + Install App + Theme Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Quick Search Button */}
           <button
@@ -107,14 +116,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </kbd>
           </button>
 
-          {/* Random Ayah Pill Button */}
-          <button
-            onClick={() => setActiveTab('random')}
-            className="hidden sm:flex items-center gap-1.5 bg-[#D4AF37] hover:bg-[#c5a028] active:scale-95 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all cursor-pointer"
-          >
-            <Dice5 className="w-3.5 h-3.5" />
-            <span>Random Ayah</span>
-          </button>
+          {/* Install App Button */}
+          {onOpenInstall && (
+            <button
+              onClick={onOpenInstall}
+              title="Install App"
+              className="flex items-center gap-1.5 bg-[#1B4332] dark:bg-[#D4AF37] hover:bg-[#143427] dark:hover:bg-[#c5a028] text-white dark:text-[#0A2016] px-3 sm:px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Install App</span>
+            </button>
+          )}
 
           {/* Theme Toggle Button */}
           <button

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Sparkles, Heart, ShieldCheck, BookOpen, Send, Check } from 'lucide-react';
+import { Sparkles, Heart, ShieldCheck, BookOpen, Send, Check, Download, Smartphone } from 'lucide-react';
+import { APP_LOGO } from '../assets/logo';
 
 interface AboutViewProps {
   showToast: (msg: string) => void;
+  onOpenInstall?: () => void;
 }
 
-export const AboutView: React.FC<AboutViewProps> = ({ showToast }) => {
+export const AboutView: React.FC<AboutViewProps> = ({ showToast, onOpenInstall }) => {
   const [feedback, setFeedback] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -22,18 +24,44 @@ export const AboutView: React.FC<AboutViewProps> = ({ showToast }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
-      {/* Hero Header */}
-      <div className="text-center">
+      {/* App Logo & Hero Header */}
+      <div className="text-center flex flex-col items-center">
+        {/* Glowing App Icon */}
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl p-1 bg-gradient-to-tr from-[#D4AF37] via-[#F3E5AB] to-[#1B4332] shadow-2xl mb-5 group">
+          <img
+            src={APP_LOGO}
+            alt="Noor Ayat Official App Logo"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover rounded-[22px] shadow-inner"
+          />
+          <div className="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-[#1B4332] dark:bg-[#D4AF37] text-white dark:text-[#0A2016] text-[10px] font-extrabold border border-[#D4AF37]/50 shadow-md">
+            v2.0 PWA
+          </div>
+        </div>
+
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5EFE6] dark:bg-[#153828] text-[#1B4332] dark:text-[#D4AF37] text-xs font-bold border border-[#D4AF37]/30 mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-          <span>About Noor Ayat</span>
+          <span>About Noor Ayat App</span>
         </div>
         <h1 className="font-serif text-3xl sm:text-5xl font-extrabold text-[#1B4332] dark:text-stone-50">
           Light in the Words of Allah
         </h1>
         <p className="text-base sm:text-lg text-stone-600 dark:text-stone-300 mt-2 max-w-2xl mx-auto">
-          A modern, peaceful, and accessible Quran quotes platform designed for daily spiritual reflection in English and simple Hinglish.
+          A modern, peaceful, and accessible Quran quotes application designed for daily spiritual reflection in English and simple Hinglish.
         </p>
+
+        {/* Quick App Actions */}
+        {onOpenInstall && (
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={onOpenInstall}
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#1B4332] dark:bg-[#D4AF37] hover:bg-[#133326] dark:hover:bg-[#c5a028] text-white dark:text-[#0A2016] font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              <span>Install Noor Ayat on Your Device</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Mission & Content Integrity Cards */}

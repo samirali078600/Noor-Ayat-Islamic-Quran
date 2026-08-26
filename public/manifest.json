@@ -1,0 +1,18 @@
+{
+  "name": "Noor Ayat — Quran Quotes & Reminders",
+  "short_name": "Noor Ayat",
+  "description": "Quran quotes in English and simple Hinglish with Arabic text, 114 Surah explorer, instant search, and shareable cards.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071911",
+  "theme_color": "#1B4332",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/src/assets/images/noor_ayat_logo_1787760939733.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

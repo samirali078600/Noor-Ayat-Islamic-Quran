@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActiveTab } from '../types';
 import { Heart } from 'lucide-react';
+import { APP_LOGO } from '../assets/logo';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -12,8 +13,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Brand */}
         <div className="flex items-center gap-2.5 mb-3">
-          <div className="w-9 h-9 rounded-2xl bg-[#1B4332] dark:bg-[#0F2D1F] border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] shadow-xs">
-            <span className="font-arabic font-bold text-base leading-none pt-0.5">نور</span>
+          <div className="w-9 h-9 rounded-2xl p-0.5 bg-gradient-to-tr from-[#D4AF37] via-[#F3E5AB] to-[#1B4332] shadow-xs overflow-hidden">
+            <img
+              src={APP_LOGO}
+              alt="Noor Ayat Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover rounded-[13px]"
+            />
           </div>
           <span className="font-serif font-bold text-xl tracking-wider text-[#1B4332] dark:text-[#D4AF37]">
             NOOR AYAT
