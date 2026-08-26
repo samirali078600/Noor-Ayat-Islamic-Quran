@@ -39,12 +39,10 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
       } else {
         setInstallStatus(null);
       }
-    } else if (isInIframe) {
-      // Browsers block install prompt inside preview frames. Open full window.
-      window.open(window.location.href, '_blank');
-      onClose();
     } else {
-      setInstallStatus('Follow the quick 2-step guide below:');
+      // If prompt is not ready or blocked by iframe, open full window
+      window.open(window.location.href, '_blank');
+      setInstallStatus('Opened in browser. Tap menu (⋮) -> Install App.');
     }
   };
 
